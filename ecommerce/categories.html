@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Categories | ShopEasy</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f4f4f4;
+}
+
+header{
+background:#222;
+padding:15px 8%;
+position:sticky;
+top:0;
+}
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo h2{
+color:#fff;
+}
+
+.logo a{
+text-decoration:none;
+color:#fff;
+}
+
+.nav-links{
+display:flex;
+list-style:none;
+gap:25px;
+}
+
+.nav-links a{
+text-decoration:none;
+color:#fff;
+font-weight:bold;
+transition:.3s;
+}
+
+.nav-links a:hover{
+color:#00c6ff;
+}
+
+.icons{
+display:flex;
+gap:20px;
+font-size:22px;
+}
+
+.icons a{
+color:#fff;
+text-decoration:none;
+}
+
+.hero{
+height:250px;
+background:linear-gradient(to right,#0072ff,#00c6ff);
+display:flex;
+justify-content:center;
+align-items:center;
+color:#fff;
+text-align:center;
+}
+
+.hero h1{
+font-size:50px;
+}
+
+.categories{
+padding:60px 8%;
+}
+
+.categories h2{
+text-align:center;
+margin-bottom:40px;
+font-size:35px;
+}
+
+.category-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;
+}
+
+.card{
+background:#fff;
+padding:35px;
+border-radius:10px;
+text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card i{
+font-size:60px;
+color:#0072ff;
+margin-bottom:20px;
+}
+
+.card h3{
+margin-bottom:10px;
+}
+
+.card p{
+color:#555;
+}
+
+footer{
+background:#222;
+color:#fff;
+padding:40px;
+text-align:center;
+margin-top:50px;
+}
+
+@media(max-width:768px){
+
+.navbar{
+flex-direction:column;
+gap:15px;
+}
+
+.nav-links{
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.hero h1{
+font-size:35px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+
+<a href="index.html">
+
+<h2>ShopEasy</h2>
+
+</a>
+
+</div>
+
+<ul class="nav-links">
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="products.html">Shop</a></li>
+
+<li><a href="categories.html">Categories</a></li>
+
+<li><a href="about.html">About</a></li>
+
+<li><a href="contact.html">Contact</a></li>
+
+</ul>
+
+<div class="icons">
+
+<a href="wishlist.html">
+
+<i class="far fa-heart"></i>
+
+</a>
+
+<a href="cart.html">
+
+<i class="fas fa-shopping-cart"></i>
+
+</a>
+
+<a href="login.html">
+
+<i class="far fa-user"></i>
+
+</a>
+
+</div>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<div>
+
+<h1>Product Categories</h1>
+
+<p>Explore all our shopping categories</p>
+
+</div>
+
+</section>
+
+<section class="categories">
+
+<h2>Browse Categories</h2>
+
+<div class="category-grid">
+
+<div class="card">
+
+<i class="fas fa-mobile-alt"></i>
+
+<h3>Mobiles</h3>
+
+<p>Latest smartphones from top brands.</p>
+
+</div>
+
+<div class="card">
+
+<i class="fas fa-laptop"></i>
+
+<h3>Laptops</h3>
+
+<p>Gaming, business and student laptops.</p>
+
+</div>
+
+<div class="card">
+
+<i class="fas fa-tshirt"></i>
+
+<h3>Fashion</h3>
+
+<p>Men's, Women's and Kids Fashion.</p>
+
+</div>
+
+<div class="card">
+
+<i class="fas fa-shoe-prints"></i>
+
+<h3>Shoes</h3>
+
+<p>Sports, Casual and Formal Shoes.</p>
+
+</div>
+
+<div class="card">
+
+<i class="fas fa-headphones"></i>
+
+<h3>Accessories</h3>
+
+<p>Headphones, Earbuds and Speakers.</p>
+
+</div>
+
+<div class="card">
+
+<i class="fas fa-tv"></i>
+
+<h3>Electronics</h3>
+
+<p>TVs, Cameras and Home Appliances.</p>
+
+</div>
+
+<div class="card">
+
+<i class="fas fa-couch"></i>
+
+<h3>Furniture</h3>
+
+<p>Modern Furniture for Home & Office.</p>
+
+</div>
+
+<div class="card">
+
+<i class="fas fa-book"></i>
+
+<h3>Books</h3>
+
+<p>Educational, Story and Novel Collections.</p>
+
+</div>
+
+<div class="card">
+
+<i class="fas fa-dumbbell"></i>
+
+<h3>Sports</h3>
+
+<p>Fitness Equipment & Sports Gear.</p>
+
+</div>
+
+<div class="card">
+
+<i class="fas fa-gamepad"></i>
+
+<h3>Gaming</h3>
+
+<p>Gaming Consoles & Accessories.</p>
+
+</div>
+
+<div class="card">
+
+<i class="fas fa-baby"></i>
+
+<h3>Baby Care</h3>
+
+<p>Baby Products & Toys.</p>
+
+</div>
+
+<div class="card">
+
+<i class="fas fa-paint-brush"></i>
+
+<h3>Beauty</h3>
+
+<p>Cosmetics & Personal Care Products.</p>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<h2>ShopEasy</h2>
+
+<p>Your Trusted Online Shopping Destination</p>
+
+<br>
+
+<p>© 2026 ShopEasy. All Rights Reserved.</p>
+
+</footer>
+
+</body>
+</html>

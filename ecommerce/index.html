@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEasy | Online Shopping</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <h2>ShopEasy</h2>
+        </div>
+
+        <ul class="nav-links">
+
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="order-history.html">Orders</a></li>
+            
+
+        </ul>
+
+        <div class="search-box">
+
+            <input
+            type="text"
+            id="search"
+            placeholder="Search products...">
+
+            <button>
+                <i class="fas fa-search"></i>
+            </button>
+
+        </div>
+
+        <div class="icons">
+            <a href="wishlist.html">
+                <i class="far fa-heart"></i>
+            </a>
+            <a href="cart.html">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </a>
+            <a href="login.html">
+                <i class="far fa-user"></i>
+            </a>
+        </div>
+
+    </nav>
+
+</header>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>Discover Amazing Products</h1>
+
+        <p>
+            Shop the latest fashion, electronics,
+            accessories and much more.
+        </p>
+
+        <a href="products.html" class="btn">Shop Now</a>
+
+    </div>
+
+</section>
+
+<!-- ================= CATEGORIES ================= -->
+
+<section class="categories" id="categories">
+
+    <h2>Shop by Category</h2>
+
+    <div class="category-container">
+
+        <div class="category-card">
+            <i class="fas fa-mobile-alt"></i>
+            <h3>Mobiles</h3>
+        </div>
+
+        <div class="category-card">
+            <i class="fas fa-laptop"></i>
+            <h3>Laptops</h3>
+        </div>
+
+        <div class="category-card">
+            <i class="fas fa-tshirt"></i>
+            <h3>Fashion</h3>
+        </div>
+
+        <div class="category-card">
+            <i class="fas fa-shoe-prints"></i>
+            <h3>Shoes</h3>
+        </div>
+
+        <div class="category-card">
+            <i class="fas fa-headphones"></i>
+            <h3>Accessories</h3>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= PRODUCTS ================= -->
+
+<section class="products">
+
+    <h2>Featured Products</h2>
+
+    <div class="product-grid">
+
+        <!-- Product 1 -->
+
+        <div class="product-card">
+    <div class="wishlist-icon">
+        <i class="far fa-heart"></i>
+    </div>
+    <img src="img/gaming laptop.avif">
+    <h3>Gaming Laptop</h3>
+    <p class="price">₹88899</p>
+    <button class="btn add-cart">Add to Cart</button>
+</div>
+
+        <!-- Product 2 -->
+
+        <div class="product-card">
+            <div class="wishlist-icon">
+                <i class="far fa-heart"></i>
+            </div>
+            <img src="img/smartphone.jpg">
+            <h3>Smart Phone</h3>
+            <p class="price">₹14999</p>
+            <button class="btn add-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 3 -->
+
+        <div class="product-card">
+            <div class="wishlist-icon">
+                <i class="far fa-heart"></i>
+            </div>
+            <img src="img/headphone.jpg">
+            <h3>Headphones</h3>
+            <p class="price">₹999</p>
+            <button class="btn add-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 4 -->
+
+        <div class="product-card">
+            <div class="wishlist-icon">
+                <i class="far fa-heart"></i>
+            </div>
+            <img src="img/smartwatch.jpg">
+            <h3>Smart Watch</h3>
+            <p class="price">₹1499</p>
+            <button class="btn add-cart">Add to Cart</button>
+        </div>
+
+        <!-- Product 5 -->
+
+        <div class="product-card">
+            <div class="wishlist-icon">
+                <i class="far fa-heart"></i>
+            </div>
+            <img src="img/shoe.webp">
+
+            <h3>Running Shoes</h3>
+
+            <p class="price">₹799</p>
+
+            <button class="btn add-cart">
+                Add to Cart
+            </button>
+
+        </div>
+
+        <!-- Product 6 -->
+
+        <div class="product-card">
+            <div class="wishlist-icon">
+                <i class="far fa-heart"></i>
+            </div>
+            <img src="img/speaker.jpg">
+
+            <h3>Bluetooth Speaker</h3>
+
+            <p class="price">₹799</p>
+
+            <button class="btn add-cart">
+                Add to Cart
+            </button>
+
+        </div>
+
+        <!-- Product 7 -->
+
+        <div class="product-card">
+            <div class="wishlist-icon">
+                <i class="far fa-heart"></i>
+            </div>
+            <img src="img/book.jpg">
+
+            <h3>Books</h3>
+
+            <p class="price">₹399</p>
+
+            <button class="btn add-cart">
+                Add to Cart
+            </button>
+
+        </div>
+
+        <!-- Product 8 -->
+
+        <div class="product-card">
+            <div class="wishlist-icon">
+                <i class="far fa-heart"></i>
+            </div>
+            <img src="img/Beauty.jpg">
+
+            <h3>Beauty</h3>
+
+            <p class="price">₹999</p>
+
+            <button class="btn add-cart">
+                Add to Cart
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FEATURES ================= -->
+
+<section class="features">
+
+    <div class="feature">
+
+        <i class="fas fa-truck"></i>
+
+        <h3>Free Shipping</h3>
+
+        <p>On orders above ₹100</p>
+
+    </div>
+
+    <div class="feature">
+
+        <i class="fas fa-undo"></i>
+
+        <h3>Easy Returns</h3>
+
+        <p>7-Day Return Policy</p>
+
+    </div>
+
+    <div class="feature">
+
+        <i class="fas fa-lock"></i>
+
+        <h3>Secure Payment</h3>
+
+        <p>100% Safe Checkout</p>
+
+    </div>
+
+    <div class="feature">
+
+        <i class="fas fa-headset"></i>
+
+        <h3>24/7 Support</h3>
+
+        <p>Always Available</p>
+
+    </div>
+
+</section>
+
+<!-- ================= NEWSLETTER ================= -->
+
+<section class="newsletter">
+
+    <h2>Subscribe to our Newsletter</h2>
+
+    <p>
+        Get updates on new arrivals and exclusive offers.
+    </p>
+
+    <form>
+
+        <input
+        type="email"
+        placeholder="Enter your email">
+
+        <button class="btn">
+            Subscribe
+        </button>
+
+    </form>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+
+            <h2>ShopEasy</h2>
+
+            <p>
+                Your trusted online shopping destination.
+            </p>
+
+        </div>
+
+        <div>
+
+            <h3>Quick Links</h3>
+
+            <a href="#">Home</a><br>
+            <a href="#">Shop</a><br>
+            <a href="#">Contact</a>
+
+        </div>
+
+        <div>
+
+            <h3>Follow Us</h3>
+
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-linkedin"></i>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <p class="copyright">
+        © 2026 ShopEasy. All Rights Reserved.
+    </p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

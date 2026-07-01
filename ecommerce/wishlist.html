@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Wishlist | ShopEasy</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+.wishlist-section{
+padding:60px 8%;
+min-height:70vh;
+}
+
+.wishlist-section h2{
+text-align:center;
+margin-bottom:30px;
+font-size:35px;
+}
+
+.wishlist-table{
+width:100%;
+border-collapse:collapse;
+background:#fff;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.wishlist-table th,
+.wishlist-table td{
+padding:15px;
+text-align:center;
+border-bottom:1px solid #ddd;
+}
+
+.wishlist-table img{
+width:80px;
+height:80px;
+object-fit:cover;
+border-radius:8px;
+}
+
+.remove-btn{
+background:#e63946;
+color:#fff;
+border:none;
+padding:10px 18px;
+border-radius:5px;
+cursor:pointer;
+}
+
+.cart-btn{
+background:#2563eb;
+color:#fff;
+border:none;
+padding:10px 18px;
+border-radius:5px;
+cursor:pointer;
+margin-left:8px;
+}
+
+.empty{
+display:none;
+text-align:center;
+font-size:22px;
+padding:50px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+
+<a href="index.html">
+
+<h2>ShopEasy</h2>
+
+</a>
+
+</div>
+
+<ul class="nav-links">
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="shop.html">Shop</a></li>
+
+<li><a href="categories.html">Categories</a></li>
+
+<li><a href="about.html">About</a></li>
+
+<li><a href="contact.html">Contact</a></li>
+
+</ul>
+
+<div class="icons">
+
+<a href="wishlist.html">
+
+<i class="fas fa-heart"></i>
+
+</a>
+
+<a href="cart.html">
+
+<i class="fas fa-shopping-cart"></i>
+
+<span id="cart-count">0</span>
+
+</a>
+
+<a href="login.html">
+
+<i class="far fa-user"></i>
+
+</a>
+
+</div>
+
+</nav>
+
+</header>
+
+<!-- ================= WISHLIST ================= -->
+
+<section class="wishlist-section">
+
+<h2>My Wishlist ❤️</h2>
+
+<p class="empty" id="emptyWishlist">
+
+Your Wishlist is Empty.
+
+</p>
+
+<table class="wishlist-table" id="wishlistTable">
+
+<thead>
+
+<tr>
+
+<th>Image</th>
+
+<th>Product</th>
+
+<th>Price</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="wishlistBody">
+
+</tbody>
+
+</table>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div class="footer-content">
+
+<div>
+
+<h2>ShopEasy</h2>
+
+<p>Your trusted online shopping destination.</p>
+
+</div>
+
+<div>
+
+<h3>Quick Links</h3>
+
+<a href="index.html">Home</a><br>
+
+<a href="shop.html">Shop</a><br>
+
+<a href="about.html">About</a><br>
+
+<a href="contact.html">Contact</a>
+
+</div>
+
+<div>
+
+<h3>Follow Us</h3>
+
+<i class="fab fa-facebook"></i>
+<i class="fab fa-instagram"></i>
+<i class="fab fa-twitter"></i>
+<i class="fab fa-linkedin"></i>
+
+</div>
+
+</div>
+
+<hr>
+
+<p class="copyright">
+
+© 2026 ShopEasy. All Rights Reserved.
+
+</p>
+
+</footer>
+
+<script>
+
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+const wishlistBody = document.getElementById("wishlistBody");
+const wishlistTable = document.getElementById("wishlistTable");
+const emptyWishlist = document.getElementById("emptyWishlist");
+
+function loadWishlist(){
+
+    wishlistBody.innerHTML="";
+
+    if(wishlist.length===0){
+
+        wishlistTable.style.display="none";
+        emptyWishlist.style.display="block";
+        return;
+
+    }
+
+    wishlistTable.style.display="table";
+    emptyWishlist.style.display="none";
+
+    wishlist.forEach((item,index)=>{
+
+        wishlistBody.innerHTML += `
+
+        <tr>
+
+            <td>
+
+                <img src="${item.image}" width="80">
+
+            </td>
+
+            <td>${item.name}</td>
+
+            <td>${item.price}</td>
+
+            <td>
+
+                <button class="cart-btn"
+                onclick="moveToCart(${index})">
+
+                Add to Cart
+
+                </button>
+
+                <button class="remove-btn"
+                onclick="removeWishlist(${index})">
+
+                Remove
+
+                </button>
+
+            </td>
+
+        </tr>
+
+        `;
+
+    });
+
+}
+
+function removeWishlist(index){
+
+    wishlist.splice(index,1);
+
+    localStorage.setItem("wishlist",JSON.stringify(wishlist));
+
+    loadWishlist();
+
+}
+
+function moveToCart(index){
+
+    cart.push(wishlist[index]);
+
+    localStorage.setItem("cart",JSON.stringify(cart));
+
+    wishlist.splice(index,1);
+
+    localStorage.setItem("wishlist",JSON.stringify(wishlist));
+
+    alert("Product moved to Cart!");
+
+    loadWishlist();
+
+}
+
+loadWishlist();
+
+
+</script>
+
+</body>
+</html>

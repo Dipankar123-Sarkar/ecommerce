@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Shopping Cart | ShopEasy</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+.cart-section{
+padding:60px 8%;
+min-height:70vh;
+}
+
+.cart-section h2{
+text-align:center;
+margin-bottom:30px;
+font-size:35px;
+}
+
+.cart-table{
+width:100%;
+border-collapse:collapse;
+background:white;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.cart-table th,
+.cart-table td{
+padding:15px;
+text-align:center;
+border-bottom:1px solid #ddd;
+}
+
+.cart-table img{
+width:80px;
+height:80px;
+object-fit:cover;
+border-radius:8px;
+}
+
+.qty-btn{
+padding:5px 10px;
+margin:0 5px;
+cursor:pointer;
+}
+
+.remove-btn{
+background:red;
+color:white;
+border:none;
+padding:8px 15px;
+cursor:pointer;
+border-radius:5px;
+}
+
+.cart-total{
+margin-top:30px;
+text-align:right;
+font-size:25px;
+font-weight:bold;
+}
+
+.cart-buttons{
+margin-top:20px;
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+}
+
+.cart-buttons a{
+text-decoration:none;
+background:#2563eb;
+color:white;
+padding:12px 25px;
+border-radius:5px;
+}
+
+.empty{
+text-align:center;
+font-size:22px;
+padding:50px;
+display:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+
+<a href="index.html">
+
+<h2>ShopEasy</h2>
+
+</a>
+
+</div>
+
+<ul class="nav-links">
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="shop.html">Shop</a></li>
+
+<li><a href="categories.html">Categories</a></li>
+
+<li><a href="about.html">About</a></li>
+
+<li><a href="contact.html">Contact</a></li>
+
+</ul>
+
+<div class="icons">
+
+<a href="wishlist.html">
+
+<i class="far fa-heart"></i>
+
+</a>
+
+<a href="cart.html">
+
+<i class="fas fa-shopping-cart"></i>
+
+<span id="cart-count">0</span>
+
+</a>
+
+<a href="login.html">
+
+<i class="far fa-user"></i>
+
+</a>
+
+</div>
+
+</nav>
+
+</header>
+
+<!-- ================= CART ================= -->
+
+<section class="cart-section">
+
+<h2>My Shopping Cart</h2>
+
+<p class="empty" id="emptyCart">
+Your cart is empty.
+</p>
+
+<table class="cart-table" id="cartTable">
+
+<thead>
+
+<tr>
+
+<th>Image</th>
+
+<th>Product</th>
+
+<th>Price</th>
+
+<th>Quantity</th>
+
+<th>Total</th>
+
+<th>Remove</th>
+
+</tr>
+
+</thead>
+
+<tbody id="cartBody">
+
+</tbody>
+
+</table>
+
+<div class="cart-total">
+
+Total : ₹<span id="grandTotal">0</span>
+
+</div>
+
+<div class="cart-buttons">
+
+<a href="shop.html">
+
+← Continue Shopping
+
+</a>
+
+<a href="checkout.html">
+
+Proceed to Checkout
+
+</a>
+
+</div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div class="footer-content">
+
+<div>
+
+<h2>ShopEasy</h2>
+
+<p>
+
+Your trusted online shopping destination.
+
+</p>
+
+</div>
+
+<div>
+
+<h3>Quick Links</h3>
+
+<a href="index.html">Home</a><br>
+
+<a href="shop.html">Shop</a><br>
+
+<a href="about.html">About</a><br>
+
+<a href="contact.html">Contact</a>
+
+</div>
+
+<div>
+
+<h3>Follow Us</h3>
+
+<i class="fab fa-facebook"></i>
+
+<i class="fab fa-instagram"></i>
+
+<i class="fab fa-twitter"></i>
+
+<i class="fab fa-linkedin"></i>
+
+</div>
+
+</div>
+
+<hr>
+
+<p class="copyright">
+
+© 2026 ShopEasy. All Rights Reserved.
+
+</p>
+
+</footer>
+<script>
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+const cartBody = document.getElementById("cartBody");
+const grandTotal = document.getElementById("grandTotal");
+const emptyCart = document.getElementById("emptyCart");
+const cartTable = document.getElementById("cartTable");
+
+function loadCart(){
+
+    cartBody.innerHTML = "";
+
+    let total = 0;
+
+    if(cart.length === 0){
+
+        emptyCart.style.display = "block";
+        cartTable.style.display = "none";
+        grandTotal.innerHTML = "0.00";
+        return;
+
+    }
+
+    emptyCart.style.display = "none";
+    cartTable.style.display = "table";
+
+    cart.forEach((item,index)=>{
+
+        let price = Number(item.price.replace(/[^0-9.]/g,""));
+
+        let qty = item.quantity || 1;
+
+        let itemTotal = price * qty;
+
+        total += itemTotal;
+
+        cartBody.innerHTML += `
+
+        <tr>
+
+            <td>
+                <img src="${item.image}" width="80">
+            </td>
+
+            <td>${item.name}</td>
+
+            <td>${item.price}</td>
+
+            <td>
+
+                <button onclick="decreaseQty(${index})">-</button>
+
+                <strong style="margin:0 10px;">${qty}</strong>
+
+                <button onclick="increaseQty(${index})">+</button>
+
+            </td>
+
+            <td>₹${itemTotal.toFixed(2)}</td>
+
+            <td>
+
+                <button class="remove-btn"
+                onclick="removeItem(${index})">
+
+                Remove
+
+                </button>
+
+            </td>
+
+        </tr>
+
+        `;
+
+    });
+
+    grandTotal.innerHTML = total.toFixed(2);
+
+}
+
+function increaseQty(index){
+
+    cart[index].quantity++;
+
+    localStorage.setItem("cart",JSON.stringify(cart));
+
+    loadCart();
+
+}
+
+function decreaseQty(index){
+
+    if(cart[index].quantity > 1){
+
+        cart[index].quantity--;
+
+    }else{
+
+        cart.splice(index,1);
+
+    }
+
+    localStorage.setItem("cart",JSON.stringify(cart));
+
+    loadCart();
+
+}
+
+function removeItem(index){
+
+    cart.splice(index,1);
+
+    localStorage.setItem("cart",JSON.stringify(cart));
+
+    loadCart();
+
+}
+
+loadCart();
+
+</script>
+
+</body>
+</html>

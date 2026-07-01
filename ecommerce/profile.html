@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Profile | ShopEasy</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f5f5f5;
+}
+
+header{
+background:#2563eb;
+padding:15px 8%;
+}
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+color:#fff;
+}
+
+.nav-links{
+display:flex;
+list-style:none;
+gap:20px;
+}
+
+.nav-links a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+.profile-container{
+width:450px;
+max-width:90%;
+background:white;
+margin:50px auto;
+padding:30px;
+border-radius:12px;
+box-shadow:0 10px 20px rgba(0,0,0,.15);
+text-align:center;
+}
+
+.profile-img{
+width:120px;
+height:120px;
+border-radius:50%;
+border:4px solid #2563eb;
+margin-bottom:20px;
+}
+
+.profile-container h2{
+margin-bottom:10px;
+color:#333;
+}
+
+.profile-container p{
+color:#666;
+margin-bottom:20px;
+}
+
+.menu{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.menu a{
+text-decoration:none;
+padding:14px;
+background:#2563eb;
+color:white;
+border-radius:8px;
+font-size:17px;
+transition:.3s;
+}
+
+.menu a:hover{
+background:#1d4ed8;
+}
+
+.logout{
+background:#dc2626 !important;
+}
+
+.logout:hover{
+background:#b91c1c !important;
+}
+
+footer{
+margin-top:50px;
+background:#222;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+ShopEasy
+</div>
+
+<ul class="nav-links">
+
+<li><a href="index.html">Home</a></li>
+<li><a href="shop.html">Shop</a></li>
+<li><a href="cart.html">Cart</a></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<div class="profile-container">
+
+<img
+class="profile-img"
+src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+
+<h2 id="username">Guest User</h2>
+
+<p id="email">guest@example.com</p>
+
+<div class="menu">
+
+<a href="order-history.html">
+<i class="fas fa-box"></i>
+My Orders
+</a>
+
+<a href="wishlist.html">
+<i class="fas fa-heart"></i>
+Wishlist
+</a>
+
+<a href="cart.html">
+<i class="fas fa-shopping-cart"></i>
+My Cart
+</a>
+
+<a href="checkout.html">
+<i class="fas fa-credit-card"></i>
+Checkout
+</a>
+
+<a href="index.html">
+<i class="fas fa-home"></i>
+Home
+</a>
+
+<a href="#" onclick="editProfile()">
+<i class="fas fa-user-edit"></i>
+Edit Profile
+</a>
+
+<a href="#" class="logout" onclick="logout()">
+<i class="fas fa-sign-out-alt"></i>
+Logout
+</a>
+
+</div>
+
+</div>
+
+<footer>
+
+<p>
+
+© 2026 ShopEasy | All Rights Reserved.
+
+</p>
+
+</footer>
+
+<script>
+
+let user = JSON.parse(localStorage.getItem("user"));
+
+if(user){
+
+document.getElementById("username").innerHTML = user.name;
+
+document.getElementById("email").innerHTML = user.email;
+
+}else{
+
+alert("Please login first.");
+
+window.location.href="login.html";
+
+}
+
+function editProfile(){
+
+let newName = prompt("Enter new name",user.name);
+
+if(newName!=null && newName!=""){
+
+user.name=newName;
+
+localStorage.setItem("user",JSON.stringify(user));
+
+document.getElementById("username").innerHTML=newName;
+
+alert("Profile Updated");
+
+}
+
+}
+
+function logout(){
+
+localStorage.removeItem("loggedIn");
+
+alert("Logged Out Successfully");
+
+window.location.href="login.html";
+
+}
+
+</script>
+
+</body>
+</html>

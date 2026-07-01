@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+
+<title>Order History</title>
+
+<style>
+
+body{
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+padding:30px;
+}
+
+h1{
+text-align:center;
+color:#2563eb;
+}
+
+.order{
+background:white;
+padding:20px;
+margin:20px auto;
+max-width:800px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.product{
+display:flex;
+justify-content:space-between;
+padding:10px 0;
+border-bottom:1px solid #ddd;
+}
+
+img{
+width:70px;
+height:70px;
+object-fit:cover;
+border-radius:8px;
+}
+
+.back{
+display:inline-block;
+margin:20px;
+background:#2563eb;
+color:white;
+padding:10px 20px;
+text-decoration:none;
+border-radius:5px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<a href="index.html" class="back">← Home</a>
+
+<h1>My Orders</h1>
+
+<div id="orders"></div>
+
+<script>
+
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+const container = document.getElementById("orders");
+
+if(orders.length === 0){
+
+container.innerHTML="<h2 style='text-align:center'>No Orders Yet</h2>";
+
+}
+
+orders.reverse().forEach(order=>{
+
+let html=`
+
+<div class="order">
+
+<h3>Order ID : ${order.id}</h3>
+
+<p><strong>Date :</strong> ${order.date}</p>
+
+`;
+
+let total=0;
+
+order.items.forEach(item=>{
+
+let price=Number(item.price.replace(/[^0-9.]/g,""));
+
+let qty=item.quantity || 1;
+
+total += price*qty;
+
+html+=`
+
+<div class="product">
+
+<div>
+
+<img src="${item.image}">
+
+</div>
+
+<div>
+
+<h4>${item.name}</h4>
+
+<p>₹${price}</p>
+
+<p>Qty : ${qty}</p>
+
+</div>
+
+<div>
+
+<strong>₹${price*qty}</strong>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+html+=`
+
+<h2 style="text-align:right">
+
+Grand Total : ₹${total}
+
+</h2>
+
+</div>
+
+`;
+
+container.innerHTML+=html;
+
+});
+
+</script>
+
+</body>
+</html>
